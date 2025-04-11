@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,24 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+        // Custom colors for roadmap
+        roadmap: {
+          live: "#3b82f6", // blue-500
+          recorded: "#8b5cf6", // violet-500
+          combined: "#10b981", // emerald-500
+          assignment: "#f97316", // orange-500
+          practice: "#f59e0b", // amber-500
+          code: "#1e40af", // blue-800
+          nocode: "#0d9488", // teal-600
+          module: "#f43f5e", // rose-500
+          submodule: "#8b5cf6", // violet-500
+          connector: "#94a3b8", // slate-400
+        },
+        brand: {
+          orange: "#ff5631",
+          dark: "#333333",
+        }
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +102,16 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+        'pulse-light': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.7' }
+        },
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+        'pulse-light': 'pulse-light 2s ease-in-out infinite',
 			}
 		}
 	},
