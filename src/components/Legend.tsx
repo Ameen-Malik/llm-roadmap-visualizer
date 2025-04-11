@@ -29,7 +29,7 @@ const Legend: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
         <LegendItem color="bg-roadmap-module" label="Module" />
         <LegendItem color="bg-roadmap-submodule" label="Submodule" />
-        <LegendItem color="bg-roadmap-live" label="Live (Sphere-based | Code/No-Code)" />
+        <LegendItem color="bg-roadmap-live" label="Live (Code/No-Code)" />
         <LegendItem color="bg-roadmap-recorded" label="Recorded Lecture" />
         <LegendItem color="bg-roadmap-combined" label="Combined" />
         <LegendItem color="bg-roadmap-assignment" label="Assignment" />
