@@ -63,18 +63,16 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-        // Custom colors for roadmap
+        // Updated colors for roadmap with dark mode friendly colors
         roadmap: {
-          live: "#3b82f6", // blue-500
-          recorded: "#8b5cf6", // violet-500
-          combined: "#10b981", // emerald-500
-          assignment: "#f97316", // orange-500
-          practice: "#f59e0b", // amber-500
-          code: "#1e40af", // blue-800
-          nocode: "#0d9488", // teal-600
-          module: "#f43f5e", // rose-500
-          submodule: "#8b5cf6", // violet-500
-          connector: "#94a3b8", // slate-400
+          module: "#f43f5e", // rose-500 (for modules)
+          submodule: "#8b5cf6", // violet-500 (for submodules)
+          live: "#3b82f6", // blue-500 (for live/no-code lectures)
+          recorded: "#a78bfa", // violet-400 (for recorded videos)
+          combined: "#10b981", // emerald-500 (for combined lectures)
+          assignment: "#f97316", // orange-500 (for assignments)
+          practice: "#f59e0b", // amber-500 (for practice sets)
+          connector: "#6b7280", // gray-500 (darker connector for dark mode)
         },
         brand: {
           orange: "#ff5631",

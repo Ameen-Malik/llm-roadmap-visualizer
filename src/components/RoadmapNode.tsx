@@ -14,19 +14,19 @@ interface RoadmapNodeProps {
 const getTypeColor = (type: ContentType): string => {
   switch (type) {
     case 'Live':
-      return 'bg-roadmap-live';
+      return 'bg-roadmap-live text-white';
     case 'Recorded':
-      return 'bg-roadmap-recorded';
+      return 'bg-roadmap-recorded text-white';
     case 'Live (Combined)':
-      return 'bg-roadmap-combined';
+      return 'bg-roadmap-combined text-white';
     case 'Recorded (Combined)':
-      return 'bg-roadmap-combined border border-roadmap-recorded';
+      return 'bg-roadmap-combined border border-roadmap-recorded text-white';
     case 'Assignment':
-      return 'bg-roadmap-assignment';
+      return 'bg-roadmap-assignment text-white';
     case 'Practice Set':
-      return 'bg-roadmap-practice';
+      return 'bg-roadmap-practice text-white';
     default:
-      return 'bg-gray-500';
+      return 'bg-gray-500 text-white';
   }
 };
 
@@ -166,7 +166,7 @@ const ItemNode: React.FC<ItemNodeProps> = ({ item, isLast = false }) => {
           "w-[240px] md:w-[280px]"
         )}
       >
-        <div className="text-left text-sm md:text-base">
+        <div className="text-left">
           <p className="font-medium text-sm md:text-base">{item.title}</p>
           <p className="text-xs opacity-80 mt-1">{item.type}</p>
         </div>

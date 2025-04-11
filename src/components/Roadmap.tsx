@@ -10,9 +10,9 @@ const Roadmap: React.FC = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="relative"
+      className="relative flex justify-center"
     >
-      <div className="flex flex-col gap-8 items-start">
+      <div className="flex flex-col gap-8 items-center">
         {roadmapData.map((module, index) => (
           <RoadmapNode
             key={module.title}
