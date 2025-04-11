@@ -87,10 +87,31 @@ const Index: React.FC = () => {
             <Roadmap />
           </div>
         </div>
+        
+        {/* Track visualization graphic */}
+        <div className="mt-16 mb-8">
+          <h2 className="text-xl md:text-2xl font-bold mb-6 text-center">Track Structure Visualization</h2>
+          <div className="flex justify-center">
+            <img 
+              src="/lovable-uploads/72f54afa-7447-402e-ac55-f398ff49ef79.png" 
+              alt="Track Structure Visualization" 
+              className="max-w-full md:max-w-2xl rounded-lg shadow-md" 
+            />
+          </div>
+        </div>
+        
+        {/* Disclaimer */}
+        <div className="mt-8 mb-12 max-w-3xl mx-auto">
+          <p className="text-muted-foreground text-sm text-center italic">
+            <strong>Note:</strong> This roadmap is a dynamic resource and will be continuously updated based on evolving curriculum requirements, 
+            industry developments, and specific cohort needs. The content, structure, and timing may be adjusted 
+            to ensure optimal learning outcomes and alignment with industry best practices.
+          </p>
+        </div>
       </main>
       
       {/* Footer */}
-      <footer className="bg-card border-t border-border py-6 mt-12">
+      <footer className="bg-card border-t border-border py-6">
         <div className="container px-4 md:px-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <Logo className="mb-4 md:mb-0" />
