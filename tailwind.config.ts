@@ -71,7 +71,7 @@ export default {
           recorded: "#a78bfa", // violet-400 (for recorded videos)
           combined: "#facc15", // yello-500 (for combined lectures)(updated)
           assignment: "#f97316", // orange-500 (for assignments)
-          practice: "#f59e0b", // amber-500 (for practice sets)
+          practice: "#06b6d4", // cyan-500 (for practice sets)
           connector: "#6b7280", // gray-500 (darker connector for dark mode)
         },
         brand: {
