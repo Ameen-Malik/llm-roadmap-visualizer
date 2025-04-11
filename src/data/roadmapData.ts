@@ -173,6 +173,15 @@ export const roadmapData: RoadmapModule[] = [
             type: "Live"
           }
         ]
+      },
+      {
+        title: "Memory",
+        items: [
+          {
+            title: "Introduction to Memory: Short term, long term, episodic (theory + practical)",
+            type: "Live (Combined)"
+          }
+        ]
       }
     ]
   },
