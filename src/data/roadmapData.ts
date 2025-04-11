@@ -180,7 +180,7 @@ export const roadmapData: RoadmapModule[] = [
     title: "LLM Workflows",
     submodules: [
       {
-        title: "Workflows",
+        title: "LLM Workflows", 
         items: [
           {
             title: "Intro to LLM Workflows (Theory)",
@@ -202,7 +202,7 @@ export const roadmapData: RoadmapModule[] = [
     title: "Capstone Project",
     submodules: [
       {
-        title: "Capstone",
+        title: "Capstone Project",
         items: [
           {
             title: "LLM App Building & Capstone Discussion",
@@ -220,7 +220,7 @@ export const roadmapData: RoadmapModule[] = [
     title: "LLM Fine Tuning",
     submodules: [
       {
-        title: "Fine Tuning",
+        title: "LLM Fine Tuning",
         items: [
           {
             title: "Introduction to fine-tuning models.",
@@ -246,7 +246,7 @@ export const roadmapData: RoadmapModule[] = [
     title: "Agents",
     submodules: [
       {
-        title: "AI Agents",
+        title: "Agents",
         items: [
           {
             title: "Introduction to AI Agents",

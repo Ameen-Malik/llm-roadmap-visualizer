@@ -32,6 +32,11 @@ const getTypeColor = (type: ContentType): string => {
 
 const RoadmapNode: React.FC<RoadmapNodeProps> = ({ module, isFirst = false, isLast = false }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  
+  // Check if this module has a single submodule with the same title as the module
+  // For modules like "Agents", "LLM Fine Tuning", "Capstone Project", and "LLM Workflows"
+  const hasDirectItems = module.submodules.length === 1 && 
+                         module.submodules[0].title === module.title;
 
   return (
     <div className="relative">
@@ -67,21 +72,64 @@ const RoadmapNode: React.FC<RoadmapNodeProps> = ({ module, isFirst = false, isLa
               className="overflow-hidden"
             >
               <div className="pl-12 relative">
-                {/* Vertical line connecting to submodules */}
+                {/* Vertical line connecting to submodules or items */}
                 <div className="absolute left-6 top-0 bottom-4 w-0.5 bg-roadmap-connector" />
                 
-                {module.submodules.map((submodule, subIdx) => (
-                  <SubmoduleNode
-                    key={submodule.title}
-                    submodule={submodule}
-                    isLast={subIdx === module.submodules.length - 1}
-                  />
-                ))}
+                {hasDirectItems ? (
+                  // Display items directly under module for specified modules
+                  module.submodules[0].items.map((item, itemIdx) => (
+                    <DirectItemNode
+                      key={item.title}
+                      item={item}
+                      isLast={itemIdx === module.submodules[0].items.length - 1}
+                    />
+                  ))
+                ) : (
+                  // Display submodules as usual for other modules
+                  module.submodules.map((submodule, subIdx) => (
+                    <SubmoduleNode
+                      key={submodule.title}
+                      submodule={submodule}
+                      isLast={subIdx === module.submodules.length - 1}
+                    />
+                  ))
+                )}
               </div>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
+    </div>
+  );
+};
+
+interface DirectItemNodeProps {
+  item: RoadmapItem;
+  isLast?: boolean;
+}
+
+// New component for items that connect directly to a module
+const DirectItemNode: React.FC<DirectItemNodeProps> = ({ item, isLast = false }) => {
+  return (
+    <div className="relative mb-3">
+      {/* Horizontal connector line */}
+      <div className="absolute w-6 h-0.5 bg-roadmap-connector left-0 top-6" />
+      
+      <div 
+        className={cn(
+          getTypeColor(item.type),
+          "rounded-lg p-2 ml-4",
+          "w-[240px] md:w-[280px]"
+        )}
+      >
+        <div className="text-left">
+          <p className="font-medium text-sm md:text-base">{item.title}</p>
+          <p className="text-xs opacity-80 mt-1">{item.type}</p>
+        </div>
+      </div>
+      
+      {/* Don't render the vertical line after the last item */}
+      {!isLast && <div className="absolute left-0 top-12 bottom-0 w-0.5 bg-roadmap-connector" />}
     </div>
   );
 };
