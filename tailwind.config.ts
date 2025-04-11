@@ -69,7 +69,7 @@ export default {
           submodule: "#8b5cf6", // violet-500 (for submodules)
           live: "#3b82f6", // blue-500 (for live/no-code lectures)
           recorded: "#a78bfa", // violet-400 (for recorded videos)
-          combined: "#10b981", // emerald-500 (for combined lectures)
+          combined: "#facc15", // yello-500 (for combined lectures)(updated)
           assignment: "#f97316", // orange-500 (for assignments)
           practice: "#f59e0b", // amber-500 (for practice sets)
           connector: "#6b7280", // gray-500 (darker connector for dark mode)
