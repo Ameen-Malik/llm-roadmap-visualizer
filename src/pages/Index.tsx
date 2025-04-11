@@ -88,18 +88,6 @@ const Index: React.FC = () => {
           </div>
         </div>
         
-        {/* Track visualization graphic */}
-        <div className="mt-16 mb-8">
-          <h2 className="text-xl md:text-2xl font-bold mb-6 text-center">Track Structure Visualization</h2>
-          <div className="flex justify-center">
-            <img 
-              src="/lovable-uploads/72f54afa-7447-402e-ac55-f398ff49ef79.png" 
-              alt="Track Structure Visualization" 
-              className="max-w-full md:max-w-2xl rounded-lg shadow-md" 
-            />
-          </div>
-        </div>
-        
         {/* Disclaimer */}
         <div className="mt-8 mb-12 max-w-3xl mx-auto">
           <p className="text-muted-foreground text-sm text-center italic">
