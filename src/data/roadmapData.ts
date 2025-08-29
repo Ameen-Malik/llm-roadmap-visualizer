@@ -204,6 +204,32 @@ export const roadmapData: RoadmapModule[] = [
     ]
   },
   {
+    title: "LLM Fine Tuning",
+    submodules: [
+      {
+        title: "LLM Fine Tuning",
+        items: [
+          {
+            title: "Introduction to fine-tuning models.",
+            type: "Live (Combined)"
+          },
+          {
+            title: "Data Preparation Techniques for Fine-tuning",
+            type: "Live (Combined)"
+          },
+          {
+            title: "LLM Fine-tuning Process and Hands-on Demo",
+            type: "Live (Combined)"
+          },
+          {
+            title: "Evaluation Techniques and Deployment",
+            type: "Live (Combined)"
+          }
+        ]
+      }
+    ]
+  },
+    {
     title: "Capstone Project",
     submodules: [
       {
@@ -232,32 +258,6 @@ export const roadmapData: RoadmapModule[] = [
           {
             title: "Custom Capstone",
             type: "Assignment"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    title: "LLM Fine Tuning",
-    submodules: [
-      {
-        title: "LLM Fine Tuning",
-        items: [
-          {
-            title: "Introduction to fine-tuning models.",
-            type: "Live (Combined)"
-          },
-          {
-            title: "Data Preparation Techniques for Fine-tuning",
-            type: "Live (Combined)"
-          },
-          {
-            title: "LLM Fine-tuning Process and Hands-on Demo",
-            type: "Live (Combined)"
-          },
-          {
-            title: "Evaluation Techniques and Deployment",
-            type: "Live (Combined)"
           }
         ]
       }
