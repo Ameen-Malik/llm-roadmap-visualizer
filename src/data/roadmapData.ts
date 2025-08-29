@@ -256,30 +256,55 @@ export const roadmapData: RoadmapModule[] = [
     submodules: [
       {
         title: "Agents",
-        items: [
-          {
-            title: "Introduction to AI Agents",
-            type: "Live (Combined)"
-          },
-          {
-            title: "Agentic Design Patterns",
-            type: "Live (Combined)"
-          },
-          {
-            title: "Building a ReAct Agent from Scratch",
-            type: "Live (Combined)"
-          },
-          {
-            title: "Introduction to Multi-Agent Framework",
-            type: "Live (Combined)"
-          },
-          {
-            title: "Introduction to AutoGen, CrewAI, Agent SDK",
-            type: "Live (Combined)"
-          },
-          {
-            title: "Applications of AI Agents and Case Studies",
-            type: "Live (Combined)"
+      items: [
+        {
+          title: "Introduction to AI Agents",
+          type: "Live (Combined)"
+        },
+        {
+          title: "Building your first AI agent",
+          type: "Live"
+        },
+        {
+          title: "Deep Dive: AI Agent Components & Design Patterns",
+          type: "Live (Combined)"
+        },
+        {
+          title: "Understanding Multi-Agent Systems",
+          type: "Live (Combined)"
+        },
+        {
+          title: "Hands-on Building AI Agents",
+          type: "Live"
+        },
+        {
+          title: "Applying Guardrails, Monitoring and Evaluation",
+          type: "Live (Combined)"
+        // title: "Agents",
+        // items: [
+        //   {
+        //     title: "Introduction to AI Agents",
+        //     type: "Live (Combined)"
+        //   },
+        //   {
+        //     title: "Agentic Design Patterns",
+        //     type: "Live (Combined)"
+        //   },
+        //   {
+        //     title: "Building a ReAct Agent from Scratch",
+        //     type: "Live (Combined)"
+        //   },
+        //   {
+        //     title: "Introduction to Multi-Agent Framework",
+        //     type: "Live (Combined)"
+        //   },
+        //   {
+        //     title: "Introduction to AutoGen, CrewAI, Agent SDK",
+        //     type: "Live (Combined)"
+        //   },
+        //   {
+        //     title: "Applications of AI Agents and Case Studies",
+        //     type: "Live (Combined)"
           }
         ]
       }
