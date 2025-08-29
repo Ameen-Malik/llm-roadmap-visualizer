@@ -103,7 +103,7 @@ export const roadmapData: RoadmapModule[] = [
           {
             title: "Memory",
             items: [
-              { title: "Concept of Memory and its Types (Combined)" },
+              { title: "Concept of Memory and its Types", type: "Live (Combined)" },
             ],
           },
         ],
