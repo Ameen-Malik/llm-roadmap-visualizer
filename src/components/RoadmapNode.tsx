@@ -46,7 +46,6 @@ const RoadmapNode: React.FC<{ module: RoadmapModule; isFirst?: boolean; isLast?:
               <div className="pl-12 relative">
                 <div className="absolute left-6 top-0 bottom-4 w-0.5 bg-roadmap-connector" />
                 
-                {/* Conditional Rendering: Check for submodules or direct items */}
                 {module.submodules && module.submodules.map((submodule, subIdx) => (
                   <SubmoduleNode key={submodule.title} submodule={submodule} isLast={subIdx === module.submodules.length - 1} />
                 ))}
@@ -64,7 +63,6 @@ const RoadmapNode: React.FC<{ module: RoadmapModule; isFirst?: boolean; isLast?:
   );
 };
 
-// NEW Component for Direct Items (Replaces Submodule/Concept layers)
 const DirectItemNode: React.FC<{ item: RoadmapItem; isLast?: boolean }> = ({ item, isLast = false }) => {
     return (
       <div className="relative mb-4">
@@ -80,10 +78,9 @@ const DirectItemNode: React.FC<{ item: RoadmapItem; isLast?: boolean }> = ({ ite
         {!isLast && <div className="absolute left-0 top-12 bottom-0 w-0.5 bg-roadmap-connector" />}
       </div>
     );
-  };
+};
   
-
-// Level 2: Sub-Module (e.g., Full-Stack LLM)
+// Level 2: Sub-Module (Handles both concepts and direct items)
 const SubmoduleNode: React.FC<{ submodule: RoadmapSubmodule; isLast?: boolean }> = ({ submodule, isLast = false }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   return (
@@ -102,9 +99,16 @@ const SubmoduleNode: React.FC<{ submodule: RoadmapSubmodule; isLast?: boolean }>
             <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.3 }} className="overflow-hidden">
               <div className="pl-8 pt-2 relative">
                 <div className="absolute left-4 top-0 bottom-3 w-0.5 bg-roadmap-connector" />
-                {submodule.concepts.map((concept, conceptIdx) => (
+                
+                {/* Conditional Rendering for Sub-modules */}
+                {submodule.concepts && submodule.concepts.map((concept, conceptIdx) => (
                   <ConceptNode key={concept.title} concept={concept} isLast={conceptIdx === submodule.concepts.length - 1} />
                 ))}
+                
+                {submodule.items && submodule.items.map((item, itemIdx) => (
+                    <ConceptLevelItemNode key={item.title} item={item} isLast={itemIdx === submodule.items.length-1} />
+                ))}
+
               </div>
             </motion.div>
           )}
@@ -113,6 +117,22 @@ const SubmoduleNode: React.FC<{ submodule: RoadmapSubmodule; isLast?: boolean }>
       {!isLast && <div className="absolute left-0 top-12 bottom-0 w-0.5 bg-roadmap-connector" />}
     </div>
   );
+};
+
+// A special item node for items listed directly under a sub-module
+const ConceptLevelItemNode: React.FC<{ item: RoadmapItem; isLast?: boolean }> = ({ item, isLast = false }) => {
+    return (
+        <div className="relative mb-3">
+            <div className="absolute w-4 h-0.5 bg-roadmap-connector left-0 top-6" />
+            <div className={cn(getTypeColor(item.type), "rounded-lg p-2 ml-4 w-[240px] md:w-[280px]")}>
+                <div className="text-left">
+                    <p className="font-medium text-sm md:text-base">{item.title}</p>
+                    <p className="text-xs opacity-80 mt-1">{item.type}</p>
+                </div>
+            </div>
+            {!isLast && <div className="absolute left-0 top-12 bottom-0 w-0.5 bg-roadmap-connector" />}
+        </div>
+    );
 };
 
 // Level 3: Concept (e.g., Introduction, UI)
