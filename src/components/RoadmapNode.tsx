@@ -1,8 +1,9 @@
+// src/components/RoadmapNode.tsx
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, ChevronRight } from 'lucide-react';
-import { RoadmapModule, RoadmapSubmodule, RoadmapItem, ContentType } from '@/data/roadmapData';
+import { RoadmapModule, RoadmapSubmodule, RoadmapConcept, RoadmapItem, ContentType } from '@/data/roadmapData';
 import { cn } from '@/lib/utils';
 
 interface RoadmapNodeProps {
@@ -13,53 +14,30 @@ interface RoadmapNodeProps {
 
 const getTypeColor = (type: ContentType): string => {
   switch (type) {
-    case 'Live':
-      return 'bg-roadmap-live text-white';
-    case 'Recorded':
-      return 'bg-roadmap-recorded text-white';
-    case 'Live (Combined)':
-      return 'bg-roadmap-combined text-white';
-    case 'Recorded (Combined)':
-      return 'bg-roadmap-combined border border-roadmap-recorded text-white';
-    case 'Assignment':
-      return 'bg-roadmap-assignment text-white';
-    case 'Practice Set':
-      return 'bg-roadmap-practice text-white';
-    default:
-      return 'bg-gray-500 text-white';
+    case 'Live': return 'bg-roadmap-live text-white';
+    case 'Recorded': return 'bg-roadmap-recorded text-white';
+    case 'Live (Combined)': return 'bg-roadmap-combined text-white';
+    case 'Recorded (Combined)': return 'bg-roadmap-combined border border-roadmap-recorded text-white';
+    case 'Assignment': return 'bg-roadmap-assignment text-white';
+    default: return 'bg-gray-500 text-white';
   }
 };
 
+// Level 1: Main Module (e.g., LLM Module)
 const RoadmapNode: React.FC<RoadmapNodeProps> = ({ module, isFirst = false, isLast = false }) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  
-  // Check if this module has a single submodule with the same title as the module
-  // For modules like "Agents", "LLM Fine Tuning", "Capstone Project", and "LLM Workflows"
-  const hasDirectItems = module.submodules.length === 1 && 
-                         module.submodules[0].title === module.title;
 
   return (
     <div className="relative">
-      {/* Vertical connector line */}
       {!isFirst && <div className="absolute w-0.5 bg-roadmap-connector h-8 -top-8 left-6" />}
-      {!isLast && <div className="absolute w-0.5 bg-roadmap-connector h-8 top-14 left-6" />}
       
-      {/* Module node */}
       <div className="relative z-10">
-        <div 
-          className={cn(
-            "bg-roadmap-module text-white rounded-lg p-4 mb-4",
-            "w-[280px] md:w-[320px] cursor-pointer hover:shadow-lg transition-shadow",
-            "flex items-center justify-between"
-          )}
+        <div
+          className={cn("bg-roadmap-module text-white rounded-lg p-4 mb-4 w-[280px] md:w-[320px] cursor-pointer hover:shadow-lg transition-shadow flex items-center justify-between")}
           onClick={() => setIsExpanded(!isExpanded)}
         >
           <span className="font-bold">{module.title}</span>
-          {isExpanded ? (
-            <ChevronDown size={20} />
-          ) : (
-            <ChevronRight size={20} />
-          )}
+          {isExpanded ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
         </div>
         
         <AnimatePresence>
@@ -72,28 +50,14 @@ const RoadmapNode: React.FC<RoadmapNodeProps> = ({ module, isFirst = false, isLa
               className="overflow-hidden"
             >
               <div className="pl-12 relative">
-                {/* Vertical line connecting to submodules or items */}
                 <div className="absolute left-6 top-0 bottom-4 w-0.5 bg-roadmap-connector" />
-                
-                {hasDirectItems ? (
-                  // Display items directly under module for specified modules
-                  module.submodules[0].items.map((item, itemIdx) => (
-                    <DirectItemNode
-                      key={item.title}
-                      item={item}
-                      isLast={itemIdx === module.submodules[0].items.length - 1}
-                    />
-                  ))
-                ) : (
-                  // Display submodules as usual for other modules
-                  module.submodules.map((submodule, subIdx) => (
-                    <SubmoduleNode
-                      key={submodule.title}
-                      submodule={submodule}
-                      isLast={subIdx === module.submodules.length - 1}
-                    />
-                  ))
-                )}
+                {module.submodules.map((submodule, subIdx) => (
+                  <SubmoduleNode
+                    key={submodule.title}
+                    submodule={submodule}
+                    isLast={subIdx === module.submodules.length - 1}
+                  />
+                ))}
               </div>
             </motion.div>
           )}
@@ -103,37 +67,7 @@ const RoadmapNode: React.FC<RoadmapNodeProps> = ({ module, isFirst = false, isLa
   );
 };
 
-interface DirectItemNodeProps {
-  item: RoadmapItem;
-  isLast?: boolean;
-}
-
-// New component for items that connect directly to a module
-const DirectItemNode: React.FC<DirectItemNodeProps> = ({ item, isLast = false }) => {
-  return (
-    <div className="relative mb-3">
-      {/* Horizontal connector line */}
-      <div className="absolute w-6 h-0.5 bg-roadmap-connector left-0 top-6" />
-      
-      <div 
-        className={cn(
-          getTypeColor(item.type),
-          "rounded-lg p-2 ml-4",
-          "w-[240px] md:w-[280px]"
-        )}
-      >
-        <div className="text-left">
-          <p className="font-medium text-sm md:text-base">{item.title}</p>
-          <p className="text-xs opacity-80 mt-1">{item.type}</p>
-        </div>
-      </div>
-      
-      {/* Don't render the vertical line after the last item */}
-      {!isLast && <div className="absolute left-0 top-12 bottom-0 w-0.5 bg-roadmap-connector" />}
-    </div>
-  );
-};
-
+// Level 2: Sub-Module (e.g., Full-Stack LLM)
 interface SubmoduleNodeProps {
   submodule: RoadmapSubmodule;
   isLast?: boolean;
@@ -144,24 +78,14 @@ const SubmoduleNode: React.FC<SubmoduleNodeProps> = ({ submodule, isLast = false
 
   return (
     <div className="relative mb-4">
-      {/* Horizontal connector line */}
       <div className="absolute w-6 h-0.5 bg-roadmap-connector left-0 top-6" />
-      
       <div className="relative">
         <div
-          className={cn(
-            "bg-roadmap-submodule text-white rounded-lg p-3",
-            "w-[260px] md:w-[300px] cursor-pointer hover:shadow-md transition-shadow",
-            "flex items-center justify-between"
-          )}
+          className={cn("bg-roadmap-submodule text-white rounded-lg p-3 w-[260px] md:w-[300px] cursor-pointer hover:shadow-md transition-shadow flex items-center justify-between")}
           onClick={() => setIsExpanded(!isExpanded)}
         >
           <span className="font-medium">{submodule.title}</span>
-          {isExpanded ? (
-            <ChevronDown size={18} />
-          ) : (
-            <ChevronRight size={18} />
-          )}
+          {isExpanded ? <ChevronDown size={18} /> : <ChevronRight size={18} />}
         </div>
         
         <AnimatePresence>
@@ -174,14 +98,12 @@ const SubmoduleNode: React.FC<SubmoduleNodeProps> = ({ submodule, isLast = false
               className="overflow-hidden"
             >
               <div className="pl-8 pt-2 relative">
-                {/* Vertical line connecting to items */}
                 <div className="absolute left-4 top-0 bottom-3 w-0.5 bg-roadmap-connector" />
-                
-                {submodule.items.map((item, itemIdx) => (
-                  <ItemNode
-                    key={item.title}
-                    item={item}
-                    isLast={itemIdx === submodule.items.length - 1}
+                {submodule.concepts.map((concept, conceptIdx) => (
+                  <ConceptNode
+                    key={concept.title}
+                    concept={concept}
+                    isLast={conceptIdx === submodule.concepts.length - 1}
                   />
                 ))}
               </div>
@@ -189,13 +111,60 @@ const SubmoduleNode: React.FC<SubmoduleNodeProps> = ({ submodule, isLast = false
           )}
         </AnimatePresence>
       </div>
-      
-      {/* Don't render the vertical line after the last submodule */}
       {!isLast && <div className="absolute left-0 top-12 bottom-0 w-0.5 bg-roadmap-connector" />}
     </div>
   );
 };
 
+// Level 3: Concept (e.g., Introduction, UI)
+interface ConceptNodeProps {
+  concept: RoadmapConcept;
+  isLast?: boolean;
+}
+
+const ConceptNode: React.FC<ConceptNodeProps> = ({ concept, isLast = false }) => {
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    return (
+        <div className="relative mb-3">
+            <div className="absolute w-4 h-0.5 bg-roadmap-connector left-0 top-6" />
+            <div
+                className={cn("bg-roadmap-practice text-white rounded-lg p-2 ml-4 w-[240px] md:w-[280px] cursor-pointer hover:shadow-sm transition-shadow flex items-center justify-between")}
+                onClick={() => setIsExpanded(!isExpanded)}
+            >
+                <span className="font-medium text-sm">{concept.title}</span>
+                {isExpanded ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
+            </div>
+
+            <AnimatePresence>
+                {isExpanded && (
+                    <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                    >
+                        <div className="pl-6 pt-2 relative">
+                             <div className="absolute left-2 top-0 bottom-3 w-0.5 bg-roadmap-connector" />
+                             {concept.items.map((item, itemIdx) => (
+                                <ItemNode 
+                                    key={item.title}
+                                    item={item}
+                                    isLast={itemIdx === concept.items.length - 1}
+                                />
+                             ))}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+            {!isLast && <div className="absolute left-0 top-12 bottom-0 w-0.5 bg-roadmap-connector" />}
+        </div>
+    );
+};
+
+
+// Level 4: Item (e.g., Lecture, Assignment)
 interface ItemNodeProps {
   item: RoadmapItem;
   isLast?: boolean;
@@ -204,23 +173,13 @@ interface ItemNodeProps {
 const ItemNode: React.FC<ItemNodeProps> = ({ item, isLast = false }) => {
   return (
     <div className="relative mb-3">
-      {/* Horizontal connector line */}
-      <div className="absolute w-4 h-0.5 bg-roadmap-connector left-0 top-6" />
-      
-      <div 
-        className={cn(
-          getTypeColor(item.type),
-          "rounded-lg p-2 ml-4",
-          "w-[240px] md:w-[280px]"
-        )}
-      >
+      <div className="absolute w-2 h-0.5 bg-roadmap-connector left-0 top-6" />
+      <div className={cn(getTypeColor(item.type), "rounded-lg p-2 ml-4 w-[220px] md:w-[260px]")}>
         <div className="text-left">
           <p className="font-medium text-sm md:text-base">{item.title}</p>
           <p className="text-xs opacity-80 mt-1">{item.type}</p>
         </div>
       </div>
-      
-      {/* Don't render the vertical line after the last item */}
       {!isLast && <div className="absolute left-0 top-12 bottom-0 w-0.5 bg-roadmap-connector" />}
     </div>
   );
