@@ -58,7 +58,7 @@ export const roadmapData: RoadmapModule[] = [
             ],
           },
           {
-            title: "LLM",
+            title: "Intro to LLMs",
             items: [
               { title: "Intro to LLM & Prompt Engineering (Theory)", type: "Live (Combined)" },
               { title: "LLM (Pre recorded series) (Theory)", type: "Recorded (Combined)" },
@@ -101,17 +101,17 @@ export const roadmapData: RoadmapModule[] = [
       },
       {
         title: "LLM Workflows",
-        concepts: [
-          {
-            title: "LLM Workflows",
+        // concepts: [
+        //   {
+        //     title: "LLM Workflows",
             items: [
               { title: "Intro to LLM Workflows amd Chains (Theory)", type: "Live (Combined)" },
               { title: "Intro to LLM Workflows and Chains (Practical)", type: "Live" },
               { title: "Decision-Making Frameworks for Choosing Between Fine-Tuning and RAG", type: "Live (Combined)" },
               { title: "Building and Architecting GenAI Applications", type: "Live (Combined)" },
             ],
-          },
-        ],
+          // },
+        // ],
       },
       {
         title: "Fine-tuning LLM",
