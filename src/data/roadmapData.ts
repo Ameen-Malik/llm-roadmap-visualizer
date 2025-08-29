@@ -2,26 +2,24 @@
 
 export type ContentType = 'Live' | 'Recorded' | 'Live (Combined)' | 'Recorded (Combined)' | 'Assignment';
 
-// An individual lecture or assignment
 export interface RoadmapItem {
   title: string;
   type: ContentType;
   description?: string;
 }
 
-// A collection of items under a concept (e.g., UI, API)
 export interface RoadmapConcept {
   title: string;
   items: RoadmapItem[];
 }
 
-// A sub-module within a larger module (e.g., Full-Stack LLM)
+// UPDATE: A Submodule can now contain concepts OR direct items
 export interface RoadmapSubmodule {
   title: string;
-  concepts: RoadmapConcept[];
+  concepts?: RoadmapConcept[];
+  items?: RoadmapItem[];
 }
 
-// A top-level module. Can contain submodules OR direct items.
 export interface RoadmapModule {
   title: string;
   submodules?: RoadmapSubmodule[];
@@ -63,7 +61,7 @@ export const roadmapData: RoadmapModule[] = [
             ],
           },
           {
-            title: "Intro to LLM",
+            title: "LLM",
             items: [
               { title: "Intro to LLM & Prompt Engineering (Theory)", type: "Live (Combined)" },
               { title: "LLM (Pre recorded series) (Theory)", type: "Recorded (Combined)" },
@@ -106,30 +104,22 @@ export const roadmapData: RoadmapModule[] = [
       },
       {
         title: "LLM Workflows",
-        concepts: [
-          {
-            title: "LLM Workflows",
-            items: [
-              { title: "Intro to LLM Workflows amd Chains (Theory)", type: "Live (Combined)" },
-              { title: "Intro to LLM Workflows and Chains (Practical)", type: "Live" },
-              { title: "Decision-Making Frameworks for Choosing Between Fine-Tuning and RAG", type: "Live (Combined)" },
-              { title: "Building and Architecting GenAI Applications", type: "Live (Combined)" },
-            ],
-          },
+        // This sub-module now has direct items
+        items: [
+            { title: "Intro to LLM Workflows amd Chains (Theory)", type: "Live (Combined)" },
+            { title: "Intro to LLM Workflows and Chains (Practical)", type: "Live" },
+            { title: "Decision-Making Frameworks for Choosing Between Fine-Tuning and RAG", type: "Live (Combined)" },
+            { title: "Building and Architecting GenAI Applications", type: "Live (Combined)" },
         ],
       },
       {
         title: "Fine-tuning LLM",
-        concepts: [
-          {
-            title: "Fine-tuning LLM",
-            items: [
-              { title: "Introduction to fine-tuning models.", type: "Live (Combined)" },
-              { title: "Data Preparation Techniques for Fine-tuning", type: "Live (Combined)" },
-              { title: "LLM Fine-tuning Process and Hands-on Demo", type: "Live (Combined)" },
-              { title: "Evaluation Techniques and Deployment", type: "Live (Combined)" },
-            ],
-          },
+        // This sub-module also has direct items
+        items: [
+            { title: "Introduction to fine-tuning models.", type: "Live (Combined)" },
+            { title: "Data Preparation Techniques for Fine-tuning", type: "Live (Combined)" },
+            { title: "LLM Fine-tuning Process and Hands-on Demo", type: "Live (Combined)" },
+            { title: "Evaluation Techniques and Deployment", type: "Live (Combined)" },
         ],
       },
     ],
