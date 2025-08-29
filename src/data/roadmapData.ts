@@ -198,6 +198,10 @@ export const roadmapData: RoadmapModule[] = [
           {
             title: "Decision-Making Frameworks for Choosing Between Fine-Tuning and RAG",
             type: "Live (Combined)"
+          },
+          {
+            title: "Building and Architecting GenAI Applications",
+            type: "Live (Combined)"
           }
         ]
       }
