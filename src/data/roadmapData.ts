@@ -100,6 +100,12 @@ export const roadmapData: RoadmapModule[] = [
               { title: "Advanced RAG", type: "Live (Combined)" },
             ],
           },
+          {
+            title: "Memory",
+            items: [
+              { title: "Concept of Memory and its Types (Combined)" },
+            ],
+          },
         ],
       },
       {
