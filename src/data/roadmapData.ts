@@ -2,25 +2,30 @@
 
 export type ContentType = 'Live' | 'Recorded' | 'Live (Combined)' | 'Recorded (Combined)' | 'Assignment';
 
+// An individual lecture or assignment
 export interface RoadmapItem {
   title: string;
   type: ContentType;
   description?: string;
 }
 
+// A collection of items under a concept (e.g., UI, API)
 export interface RoadmapConcept {
   title: string;
   items: RoadmapItem[];
 }
 
+// A sub-module within a larger module (e.g., Full-Stack LLM)
 export interface RoadmapSubmodule {
   title: string;
   concepts: RoadmapConcept[];
 }
 
+// A top-level module. Can contain submodules OR direct items.
 export interface RoadmapModule {
   title: string;
-  submodules: RoadmapSubmodule[];
+  submodules?: RoadmapSubmodule[];
+  items?: RoadmapItem[];
 }
 
 export const roadmapData: RoadmapModule[] = [
@@ -58,7 +63,7 @@ export const roadmapData: RoadmapModule[] = [
             ],
           },
           {
-            title: "Intro to LLMs",
+            title: "Intro to LLM",
             items: [
               { title: "Intro to LLM & Prompt Engineering (Theory)", type: "Live (Combined)" },
               { title: "LLM (Pre recorded series) (Theory)", type: "Recorded (Combined)" },
@@ -101,17 +106,17 @@ export const roadmapData: RoadmapModule[] = [
       },
       {
         title: "LLM Workflows",
-        // concepts: [
-        //   {
-        //     title: "LLM Workflows",
+        concepts: [
+          {
+            title: "LLM Workflows",
             items: [
               { title: "Intro to LLM Workflows amd Chains (Theory)", type: "Live (Combined)" },
               { title: "Intro to LLM Workflows and Chains (Practical)", type: "Live" },
               { title: "Decision-Making Frameworks for Choosing Between Fine-Tuning and RAG", type: "Live (Combined)" },
               { title: "Building and Architecting GenAI Applications", type: "Live (Combined)" },
             ],
-          // },
-        // ],
+          },
+        ],
       },
       {
         title: "Fine-tuning LLM",
@@ -131,44 +136,24 @@ export const roadmapData: RoadmapModule[] = [
   },
   {
     title: "Capstone Projects",
-    submodules: [
-      {
-        title: "Capstone Projects",
-        concepts: [
-          {
-            title: "Projects",
-            items: [
-                { title: "AI Copilot for Educators", type: "Assignment" },
-                { title: "RuralRise OS", type: "Assignment" },
-                { title: "CreatorPulse", type: "Assignment" },
-                { title: "Enux -- Github for Entrepreneurs", type: "Assignment" },
-                { title: "EliteBuilders", type: "Assignment" },
-                { title: "Custom Capstone", type: "Assignment" },
-            ]
-          }
-        ]
-      }
-    ]
+    items: [
+      { title: "AI Copilot for Educators", type: "Assignment" },
+      { title: "RuralRise OS", type: "Assignment" },
+      { title: "CreatorPulse", type: "Assignment" },
+      { title: "Enux -- Github for Entrepreneurs", type: "Assignment" },
+      { title: "EliteBuilders", type: "Assignment" },
+      { title: "Custom Capstone", type: "Assignment" },
+    ],
   },
   {
     title: "AI Agents Module",
-    submodules: [
-      {
-        title: "Agents",
-        concepts: [
-            {
-                title: "Agent Lectures",
-                items: [
-                    { title: "Introduction to AI Agents", type: "Live (Combined)" },
-                    { title: "Building your first AI agent", type: "Live" },
-                    { title: "Deep Dive: AI Agent Components & Design Patterns", type: "Live (Combined)" },
-                    { title: "Understanding Multi-Agent Systems", type: "Live (Combined)" },
-                    { title: "Hands-on Building AI Agents", type: "Live" },
-                    { title: "Applying Guardrails, Monitoring and Evaluation", type: "Live (Combined)" },
-                ]
-            }
-        ]
-      }
-    ]
+    items: [
+      { title: "Introduction to AI Agents", type: "Live (Combined)" },
+      { title: "Building your first AI agent", type: "Live" },
+      { title: "Deep Dive: AI Agent Components & Design Patterns", type: "Live (Combined)" },
+      { title: "Understanding Multi-Agent Systems", type: "Live (Combined)" },
+      { title: "Hands-on Building AI Agents", type: "Live" },
+      { title: "Applying Guardrails, Monitoring and Evaluation", type: "Live (Combined)" },
+    ],
   }
 ];
