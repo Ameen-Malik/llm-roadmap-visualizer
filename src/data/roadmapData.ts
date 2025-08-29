@@ -45,10 +45,6 @@ export const roadmapData: RoadmapModule[] = [
             title: "UI Building (Practical)",
             type: "Live"
           },
-          {
-            title: "UI of Chatbot",
-            type: "Assignment"
-          }
         ]
       },
       {
@@ -56,11 +52,7 @@ export const roadmapData: RoadmapModule[] = [
         items: [
           {
             title: "Intro to APIs (theory)",
-            type: "Recorded (Combined)"
-          },
-          {
-            title: "Building apps with UI and API",
-            type: "Recorded"
+            type: "Live (Combined)"
           },
           {
             title: "Intro to Fast API (theory+code)",
@@ -70,9 +62,22 @@ export const roadmapData: RoadmapModule[] = [
             title: "Building APIs with Fast API (practical)",
             type: "Live"
           },
+        ]
+      },
+      {
+        title: "Database",
+        items: [
           {
-            title: "APIs for Chatbot",
-            type: "Assignment"
+            title: "Domain Modeling, ERD and Intro to Database (Theory)",
+            type: "Live (Combined)"
+          },
+          {
+            title: "Connecting the Dots & Database: Supabase (SQL) (Practical)",
+            type: "Live"
+          },
+          {
+            title: "Create a domain model, ER, Schema DB of practice set 1,2",
+            type: "Practice Set"
           }
         ]
       },
@@ -91,27 +96,6 @@ export const roadmapData: RoadmapModule[] = [
             title: "Prompt Engineering: Building LLM wrappers (Practical)",
             type: "Live"
           },
-          {
-            title: "Invisible software",
-            type: "Practice Set"
-          }
-        ]
-      },
-      {
-        title: "Database",
-        items: [
-          {
-            title: "Intro to Database: Domain Modeling & ER Diagrams (Theory & Practical)",
-            type: "Live (Combined)"
-          },
-          {
-            title: "Database: Supabase (SQL) (Practical)",
-            type: "Live"
-          },
-          {
-            title: "Create a domain model, ER, Schema DB of practice set 1,2",
-            type: "Practice Set"
-          }
         ]
       },
       {
@@ -136,7 +120,11 @@ export const roadmapData: RoadmapModule[] = [
           {
             title: "MVP Building",
             type: "Live"
-          }
+          },
+          {
+            title: "Mini-Capstone Project",
+            type: "Assignment"
+          },
         ]
       }
     ]
@@ -148,7 +136,7 @@ export const roadmapData: RoadmapModule[] = [
         title: "Tools",
         items: [
           {
-            title: "Function and Tool Calling in LLM (Theory)",
+            title: "Function and Tool Calling and Intro to MCP (Theory)",
             type: "Live (Combined)"
           },
           {
@@ -156,7 +144,11 @@ export const roadmapData: RoadmapModule[] = [
             type: "Recorded (Combined)"
           },
           {
-            title: "Function and Tool Calling in LLM (Practical)",
+            title: "Intro to MCP (Theory)",
+            type: "Recorded (Combined)"
+          },
+          {
+            title: "Function and Tool Calling + MCP (Practical)",
             type: "Live"
           }
         ]
@@ -171,18 +163,22 @@ export const roadmapData: RoadmapModule[] = [
           {
             title: "Building RAG apps with LlamaIndex (Practical)",
             type: "Live"
-          }
-        ]
-      },
-      {
-        title: "Memory",
-        items: [
+          },
           {
-            title: "Introduction to Memory: Short term, long term, episodic (theory + practical)",
+            title: "Advanced RAG",
             type: "Live (Combined)"
           }
         ]
       }
+      // {
+      //   title: "Memory",
+      //   items: [
+      //     {
+      //       title: "Introduction to Memory: Short term, long term, episodic (theory + practical)",
+      //       type: "Live (Combined)"
+      //     }
+      //   ]
+      // }
     ]
   },
   {
@@ -192,11 +188,11 @@ export const roadmapData: RoadmapModule[] = [
         title: "LLM Workflows", 
         items: [
           {
-            title: "Intro to LLM Workflows (Theory)",
+            title: "Intro to LLM Workflows amd Chains (Theory)",
             type: "Live (Combined)"
           },
           {
-            title: "Intro to LLM Workflows (Practical)",
+            title: "Intro to LLM Workflows and Chains (Practical)",
             type: "Live"
           },
           {
@@ -214,12 +210,28 @@ export const roadmapData: RoadmapModule[] = [
         title: "Capstone Project",
         items: [
           {
-            title: "LLM App Building & Capstone Discussion",
-            type: "Live (Combined)"
+            title: "AI Copilot for Educators",
+            type: "Assignment"
           },
           {
-            title: "Architecting AI applications with insights from Tejas.",
-            type: "Live (Combined)"
+            title: "RuralRise OS",
+            type: "Assignment"
+          },
+          {
+            title: "CreatorPulse",
+            type: "Assignment"
+          },
+          {
+            title: "Enux -- Github for Entrepreneurs",
+            type: "Assignment"
+          },
+          {
+            title: "EliteBuilders",
+            type: "Assignment"
+          },
+          {
+            title: "Custom Capstone",
+            type: "Assignment"
           }
         ]
       }
@@ -236,15 +248,15 @@ export const roadmapData: RoadmapModule[] = [
             type: "Live (Combined)"
           },
           {
-            title: "Fine-tuning processes and their evaluation.",
+            title: "Data Preparation Techniques for Fine-tuning",
             type: "Live (Combined)"
           },
           {
-            title: "Data preparation techniques for fine-tuning.",
+            title: "LLM Fine-tuning Process and Hands-on Demo",
             type: "Live (Combined)"
           },
           {
-            title: "Advanced fine-tuning techniques PEFT",
+            title: "Evaluation Techniques and Deployment",
             type: "Live (Combined)"
           }
         ]
