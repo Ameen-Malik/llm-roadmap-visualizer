@@ -98,15 +98,7 @@ const Index: React.FC = () => {
         </div>
       </main>
       
-      {/* Footer */}
-      <footer className="bg-card border-t border-border py-6">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <Logo className="mb-4 md:mb-0" />
-            <p className="text-muted-foreground text-sm">© 2025 100xEngineers. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      
     </div>
   );
 };
