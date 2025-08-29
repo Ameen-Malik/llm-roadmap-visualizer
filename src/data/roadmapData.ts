@@ -61,7 +61,7 @@ export const roadmapData: RoadmapModule[] = [
             ],
           },
           {
-            title: "LLM",
+            title: "Intro to LLM",
             items: [
               { title: "Intro to LLM & Prompt Engineering (Theory)", type: "Live (Combined)" },
               { title: "LLM (Pre recorded series) (Theory)", type: "Recorded (Combined)" },
